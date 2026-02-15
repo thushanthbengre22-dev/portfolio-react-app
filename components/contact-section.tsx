@@ -1,7 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { Github, Linkedin, Mail, Send, ArrowUpRight } from "lucide-react"
+import { Mail, Send, ArrowUpRight } from "lucide-react"
+import { GithubIcon } from "./icons/github"
+import { LinkedinIcon } from "./icons/linkedin"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -93,7 +95,7 @@ export function ContactSection() {
                     className="group flex items-center gap-3 text-foreground transition-colors hover:text-primary"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary/50 transition-colors group-hover:border-primary/30 group-hover:bg-primary/10">
-                    <Github className="h-4 w-4" />
+                    <GithubIcon className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-sm font-medium">GitHub</p>
@@ -111,7 +113,7 @@ export function ContactSection() {
                     className="group flex items-center gap-3 text-foreground transition-colors hover:text-primary"
                 >
                   <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary/50 transition-colors group-hover:border-primary/30 group-hover:bg-primary/10">
-                    <Linkedin className="h-4 w-4" />
+                    <LinkedinIcon className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-sm font-medium">LinkedIn</p>

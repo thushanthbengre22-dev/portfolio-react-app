@@ -1,4 +1,5 @@
-import { Github, Linkedin } from "lucide-react"
+import { GithubIcon } from "./icons/github"
+import { LinkedinIcon } from "./icons/linkedin"
 
 export function Footer() {
   return (
@@ -15,7 +16,7 @@ export function Footer() {
             className="text-muted-foreground transition-colors hover:text-primary"
             aria-label="GitHub"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-5 w-5" />
           </a>
           <a
             href="https://www.linkedin.com/in/thushanth-devananda-bengre/"
@@ -24,7 +25,7 @@ export function Footer() {
             className="text-muted-foreground transition-colors hover:text-primary"
             aria-label="LinkedIn"
           >
-            <Linkedin className="h-4 w-4" />
+            <LinkedinIcon className="h-5 w-5" />
           </a>
         </div>
       </div>
