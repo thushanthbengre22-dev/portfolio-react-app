@@ -1,5 +1,7 @@
 import Image from "next/image"
-import { ArrowDown, Github, Linkedin } from "lucide-react"
+import { ArrowDown, Download } from "lucide-react"
+import { GithubIcon } from "./icons/github"
+import { LinkedinIcon } from "./icons/linkedin"
 
 export function HeroSection() {
   return (
@@ -33,25 +35,34 @@ export function HeroSection() {
           while experimenting with the next generation of AI-driven digital tools.
         </p>
 
-        {/* Social Links */}
+        {/* Links */}
         <div className="mb-12 flex items-center justify-center gap-4">
+          <a
+              href="https://www.linkedin.com/in/thushanth-devananda-bengre/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+          >
+            <LinkedinIcon className="h-5 w-5" />
+            LinkedIn
+          </a>
           <a
             href="https://github.com/thushanthbengre22-dev"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
           >
-            <Github className="h-4 w-4" />
+            <GithubIcon className="h-5 w-5" />
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/thushanth-devananda-bengre/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center gap-2 rounded-lg border border-border bg-secondary/50 px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:border-primary/50 hover:bg-primary/10 hover:text-primary"
+              href="/resume.pdf"
+              download="Resume_Thushanth_Bengre.pdf"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-lg border border-border bg-primary/10 px-5 py-2.5 text-sm font-medium text-primary transition-all hover:bg-primary/20"
           >
-            <Linkedin className="h-4 w-4" />
-            LinkedIn
+            <Download className="h-4 w-4" />
+            Resume
           </a>
         </div>
 
