@@ -14,10 +14,24 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Thushanth Bengre - Software Developer',
-  description:
-    'Full-stack software developer specializing in modern web technologies, building scalable and elegant digital solutions.',
-}
+  title: 'Thushanth Bengre | Full Stack Developer & AI Explorer',
+  description: 'Full-stack engineer specializing in Java, React, and AI experimentation. Building scalable digital experiences.',
+  openGraph: {
+    title: 'Thushanth Bengre | Portfolio',
+    description: 'Architecting robust systems and exploring the latent space.',
+    url: 'https://bengredev.com',
+    siteName: 'Thushanth Bengre Portfolio',
+    images: [
+      {
+        url: '/opengraph-image.png', // Create a 1200x630 image for social previews!
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+};
 
 export const viewport: Viewport = {
   themeColor: '#0f1319',
