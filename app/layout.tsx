@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Software Developer Portfolio',
+  title: 'Thushanth Bengre - Software Developer',
   description:
     'Full-stack software developer specializing in modern web technologies, building scalable and elegant digital solutions.',
 }
