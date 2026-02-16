@@ -1,24 +1,29 @@
-import Image from "next/image"
-import { FlaskConical, BrainCircuit, Sparkles, Lock } from "lucide-react"
+import Link from "next/link"
+import { FlaskConical, BrainCircuit, Sparkles, Lock, ExternalLink, Hammer } from "lucide-react"
 
 const upcomingExperiments = [
   {
     icon: BrainCircuit,
-    title: "AI Chatbot Assistant",
+    title: "Football AI Assistant",
     description:
-      "A conversational AI assistant built with LLMs, fine-tuned for developer productivity and code review.",
+      "A conversational AI agent powered by Gemini and football-data.org. It provides real-time match stats and standings. " +
+        "Toggle 'Web Search' to let the agent browse the web for broader football knowledge beyond the football-data.org API's scope.",
+    href: "/ai-lab/football-chatbot",
+    status: "active"
   },
   {
     icon: Sparkles,
     title: "Smart Code Generator",
     description:
       "An intelligent code generation tool that understands context and generates production-ready code snippets.",
+    status: "upcoming"
   },
   {
     icon: FlaskConical,
     title: "ML Model Playground",
     description:
       "An interactive playground for experimenting with machine learning models and visualizing predictions in real-time.",
+    status: "upcoming"
   },
 ]
 
@@ -32,9 +37,9 @@ export function AiLabSection() {
         {/* Section Header */}
         <div className="mb-16 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5">
-            <Lock className="h-3.5 w-3.5 text-primary" />
+            <Hammer className="h-3.5 w-3.5 text-primary" />
             <span className="font-mono text-xs font-medium text-primary">
-              Coming Soon
+              Work In Progress
             </span>
           </div>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl text-balance">
@@ -47,55 +52,63 @@ export function AiLabSection() {
           </p>
         </div>
 
-        {/* Featured Image */}
-        <div className="relative mx-auto mb-16 aspect-[21/9] max-w-4xl overflow-hidden rounded-xl border border-border">
-          <Image
-            src="/images/ai-lab.jpg"
-            alt="AI neural network visualization"
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-background/40" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-primary/40 bg-primary/10 backdrop-blur-sm">
-                <BrainCircuit className="h-8 w-8 text-primary" />
-              </div>
-              <p className="font-mono text-sm text-primary">
-                Experiments in progress
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Upcoming Cards */}
         <div className="grid gap-6 md:grid-cols-3">
-          {upcomingExperiments.map((experiment) => (
-            <div
-              key={experiment.title}
-              className="group relative rounded-xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card"
-            >
-              {/* Lock overlay */}
-              <div className="absolute right-4 top-4">
-                <Lock className="h-3.5 w-3.5 text-muted-foreground/40" />
-              </div>
+          {upcomingExperiments.map((experiment) => {
+            const CardContent = (
+              <>
+                {/* Status overlay */}
+                <div className="absolute right-4 top-4">
+                  {experiment.status === "upcoming" ? (
+                    <Lock className="h-3.5 w-3.5 text-muted-foreground/40" />
+                  ) : (
+                    <ExternalLink className="h-3.5 w-3.5 text-primary/60" />
+                  )}
+                </div>
 
-              <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary/50 transition-colors group-hover:border-primary/30 group-hover:bg-primary/10">
-                <experiment.icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
-              </div>
+                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-secondary/50 transition-colors group-hover:border-primary/30 group-hover:bg-primary/10">
+                  <experiment.icon className="h-5 w-5 text-muted-foreground transition-colors group-hover:text-primary" />
+                </div>
 
-              <h3 className="mb-2 text-base font-semibold text-foreground">
-                {experiment.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {experiment.description}
-              </p>
+                <h3 className="mb-2 text-base font-semibold text-foreground">
+                  {experiment.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {experiment.description}
+                </p>
 
-              <div className="mt-4 inline-flex items-center gap-1.5 rounded-md bg-secondary/50 px-2.5 py-1 font-mono text-[10px] text-muted-foreground uppercase tracking-wider">
-                Upcoming
+                <div className={`mt-4 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${
+                  experiment.status === "active" 
+                    ? "bg-primary/10 text-primary" 
+                    : "bg-secondary/50 text-muted-foreground"
+                }`}>
+                  {experiment.status === "active" ? "Live Demo" : "Upcoming"}
+                </div>
+              </>
+            )
+
+            if (experiment.href) {
+              return (
+                <Link
+                  key={experiment.title}
+                  href={experiment.href}
+                  target="_blank"
+                  className="group relative rounded-xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card"
+                >
+                  {CardContent}
+                </Link>
+              )
+            }
+
+            return (
+              <div
+                key={experiment.title}
+                className="group relative rounded-xl border border-border bg-card/50 p-6 backdrop-blur-sm transition-all hover:border-primary/30 hover:bg-card"
+              >
+                {CardContent}
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>

@@ -21,8 +21,33 @@ This project was developed using a rapid "Prompt-to-Production" cycle:
 * **Framework:** [Next.js](https://nextjs.org/) (App Router)
 * **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 * **Components:** [shadcn/ui](https://ui.shadcn.com/)
+* **AI Integration:** Google Gemini API
+* **Data Source:** football-data.org API
 * **Package Manager:** `pnpm`
 * **Deployment:** [Vercel](https://vercel.com)
+
+---
+
+## ⚽ Football AI Assistant
+
+A sophisticated conversational agent built to demonstrate the integration of LLMs with structured external APIs.
+
+### Key Features
+* **Hybrid Knowledge Engine:** 
+  * **API Mode:** Strictly uses the **football-data.org** API (Free Tier) to fetch real-time standings, matches, and scorers for top European leagues (Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Champions League).
+  * **Web Search Mode:** A toggleable feature that allows the agent to fallback to its internal knowledge base (simulating web search) when the API lacks data or for broader football questions (e.g., historical facts, player bios).
+
+* **Intelligent Prompt Engineering:**
+  * **Intent Recognition:** The system first uses Gemini to analyze the user's natural language query and translate it into a specific API endpoint (e.g., "How is Arsenal doing?" -> `/competitions/PL/standings`).
+  * **Context-Aware Responses:** The agent maintains conversation history to understand follow-up questions.
+  * **Adaptive Fallbacks:** If the API fails or returns no data, the agent intelligently suggests enabling "Web Search" or explains the limitations of the free API tier.
+
+* **Multi-Model Resilience:**
+  * The system is configured to try a hierarchy of Gemini models for maximum availability and performance:
+    1. `gemini-2.5-flash` / `gemini-3-flash-preview` (Experimental/Preview)
+    2. `gemini-2.0-flash` (Next-Gen)
+    3. `gemini-1.5-flash` (Stable, Fast)
+    4. `gemini-1.5-pro` (High Reasoning)
 
 ---
 
@@ -47,11 +72,18 @@ Since this project uses **pnpm**, you can get it running locally on your Mac in 
     ```bash
     pnpm install
 
-3. **Start the development server:**
+3. **Set up Environment Variables:**
+    Create a `.env.local` file in the root directory and add your API keys:
+    ```env
+    GOOGLE_API_KEY=your_gemini_api_key
+    FOOTBALL_DATA_API_KEY=your_football_data_org_api_key
+    ```
+
+4. **Start the development server:**
     ```bash
     pnpm dev
 
-4. **View the site:**
+5. **View the site:**
 
     Open [http://localhost:3000](http://localhost:3000) in your browser.
 ---
