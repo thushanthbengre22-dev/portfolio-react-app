@@ -39,6 +39,7 @@ export const viewport: Viewport = {
 
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 export default function RootLayout({
   children,
@@ -51,6 +52,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <SpeedInsights />
       </body>
     </html>
   )
