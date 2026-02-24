@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'Thushanth Bengre AI-Lab',
     images: [
       {
-        url: 'https://yourportfolio.com/og-soccer-bot.png', // Create a 1200x630 image of your app
+        url: 'https://bengredev.com/og-soccer-bot.png',
         width: 1200,
         height: 630,
         alt: 'Screenshot of the Agentic Soccer Bot interface',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Building Agentic AI with Gemini 3',
     description: 'Exploring intent routing and tool-augmented generation in football analytics.',
-    images: ['https://yourportfolio.com/og-soccer-bot.png'],
+    images: ['https://bengredev.com/og-soccer-bot.png'],
   },
 }
 
