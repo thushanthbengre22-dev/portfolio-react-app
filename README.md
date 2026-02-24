@@ -30,24 +30,49 @@ This project was developed using a rapid "Prompt-to-Production" cycle:
 
 ## ⚽ Football AI Assistant
 
-A sophisticated conversational agent built to demonstrate the integration of LLMs with structured external APIs.
+An autonomous, multi-agent sports intelligence platform. This system transcends traditional RAG (Retrieval-Augmented Generation) 
+by implementing an autonomous decision-making layer that navigates between structured statistical schemas and unstructured live-web intelligence.
 
-### Key Features
-* **Hybrid Knowledge Engine:** 
-  * **API Mode:** Strictly uses the **football-data.org** API (Free Tier) to fetch real-time standings, matches, and scorers for top European leagues (Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Champions League).
-  * **Web Search Mode:** A toggleable feature that allows the agent to fallback to its internal knowledge base (simulating web search) when the API lacks data or for broader football questions (e.g., historical facts, player bios).
+### 🔄 System Architecture
+The assistant uses a decoupled agent strategy to ensure the UI remains snappy while the logic remains deep. This flow-state demonstrates how the **Coordinator** and **Suggestion** agents interact:
 
-* **Intelligent Prompt Engineering:**
-  * **Intent Recognition:** The system first uses Gemini to analyze the user's natural language query and translate it into a specific API endpoint (e.g., "How is Arsenal doing?" -> `/competitions/PL/standings`).
-  * **Context-Aware Responses:** The agent maintains conversation history to understand follow-up questions.
-  * **Adaptive Fallbacks:** If the API fails or returns no data, the agent intelligently suggests enabling "Web Search" or explains the limitations of the free API tier.
+```mermaid
+graph TD
+    A[User Input] --> B{Coordinator Agent}
+    B -->|Structured Stats| C[football-data.org API]
+    B -->|News/Injuries/Rumors| D[Tavily Web Search]
+    C --> E[Detailed Tactical Response]
+    D --> E
+    E --> F[Client-Side Hydration]
+    F --> G[Background Suggestion Agent]
+    G -->|Analyze Response| H[Generate Follow-up Question]
+    H --> I[Update Ghost Text Placeholder]
+    I --> J[Wait for TAB Key / One-Tap Pill]
 
-* **Multi-Model Resilience:**
-  * The system is configured to try a hierarchy of Gemini models for maximum availability and performance:
-    1. `gemini-2.5-flash` / `gemini-3-flash-preview` (Experimental/Preview)
-    2. `gemini-2.0-flash` (Next-Gen)
-    3. `gemini-1.5-flash` (Stable, Fast)
-    4. `gemini-1.5-pro` (High Reasoning)
+    style B fill:#064e3b,stroke:#059669,stroke-width:2px,color:#fff
+    style H fill:#064e3b,stroke:#059669,stroke-width:2px,color:#fff
+    style C fill:#1e293b,stroke:#475569,color:#fff
+    style D fill:#1e293b,stroke:#475569,color:#fff
+```
+
+### 🧠 Core Performance Heuristics
+
+* **Autonomous Tool Orchestration:** Implements dynamic tool selection logic. The agent evaluates the query's **temporal sensitivity**—routing historical or competition-specific queries to a structured API, while diverting rumor, injury, or tactical shift inquiries to a real-time web-crawling layer.
+
+* **Predictive UX & Contextual Memory:** * **Vectorized Follow-ups:** Instead of basic "Who is next?" prompts, the Suggestion Agent utilizes the previous response's context to generate advanced inquiries (e.g., analyzing xG overperformance or defensive transition vulnerabilities).
+   * **Heuristic Autocomplete:** A **"Ghost Text"** implementation utilizing the `append` pattern from the Vercel AI SDK, allowing for zero-friction navigation through complex tactical data.
+  
+* **Deterministic Persona Engineering:** Utilizes a highly disciplined system prompt architecture to enforce clinical, analytical output directly from the model inference. This eliminates conversational noise and ensures the agent consistently maintains a high-density, 
+professional tactical tone without requiring post-inference filtering.
+
+* **Multi-Model Resilience & Fallback:** Configured with a model hierarchy (**Gemini 2.0 Flash → 1.5 Pro**) to ensure high availability and sophisticated reasoning even during peak API latency.
+
+---
+
+### 📊 Technical Implementation Highlights
+
+* **Logic Routing:** Built using the Vercel AI SDK's `streamText` with `maxSteps: 5` to allow for multi-stage tool calls and iterative reasoning loops.
+* **State Management:** Intelligent syncing of local UI state (Ghost Text) with the AI SDK’s message history for seamless **"Tab-to-Send"** functionality and predictive placeholder updates.
 
 ---
 
