@@ -6,8 +6,8 @@ const upcomingExperiments = [
     icon: BrainCircuit,
     title: "Football AI Assistant",
     description:
-      "A conversational AI agent powered by Gemini and football-data.org. It provides real-time match stats and standings. " +
-        "Toggle 'Web Search' to let the agent browse the web for broader football knowledge beyond the football-data.org API's scope.",
+      "An autonomous soccer agent powered by Gemini and football-data.org. It intelligently chooses between official API stats and live web searching for injuries and news." +
+      "The Agent suggests questions for follow-ups and tactical deep-dives.",
     href: "/ai-lab/football-chatbot",
     status: "active"
   },
