@@ -17,7 +17,7 @@ const upcomingExperiments = [
     description:
       "An AI agent that searches the web for available job listings matching your profile and sends a curated summary directly to your email.",
     href: "/ai-lab/job-search-agent",
-    status: "upcoming"
+    status: "active"
   },
   {
     icon: FlaskConical,
