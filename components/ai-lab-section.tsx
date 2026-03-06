@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FlaskConical, BrainCircuit, Sparkles, Lock, ExternalLink, Hammer } from "lucide-react"
+import { FlaskConical, BrainCircuit, Briefcase, Lock, ExternalLink, Hammer } from "lucide-react"
 
 const upcomingExperiments = [
   {
@@ -12,10 +12,11 @@ const upcomingExperiments = [
     status: "active"
   },
   {
-    icon: Sparkles,
-    title: "Smart Code Generator",
+    icon: Briefcase,
+    title: "Job Search Agent",
     description:
-      "An intelligent code generation tool that understands context and generates production-ready code snippets.",
+      "An AI agent that searches the web for available job listings matching your profile and sends a curated summary directly to your email.",
+    href: "/ai-lab/job-search-agent",
     status: "upcoming"
   },
   {
