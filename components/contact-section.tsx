@@ -70,6 +70,18 @@ export function ContactSection() {
                   "Whether you’re a recruiter looking for a Full-Stack Architect, a fellow developer interested in AI experimentation, or someone with a complex problem that needs an elegant solution—I’m all ears."
                 }
               </p>
+              <p className="max-w-md text-sm text-muted-foreground">
+                Want access to the{" "}
+                <a
+                  href="https://www.bengredev.com/ai-lab/job-search-agent"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-medium hover:underline"
+                >
+                  Job Search Agent
+                </a>?
+                {" "}Drop your email in the form and I{"’"}ll get you allowlisted.
+              </p>
 
               <div className="space-y-4">
                 <a

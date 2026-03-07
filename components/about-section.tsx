@@ -13,6 +13,14 @@ const skills = [
   "AWS",
   "Git",
   "REST APIs",
+  "Google Gemini API",
+  "Anthropic Claude API",
+  "Vercel AI SDK",
+  "Tavily API",
+  "Upstash Redis",
+  "Resend",
+  "Vercel Cron Jobs",
+  "JSearch API",
 ]
 
 export function AboutSection() {
@@ -57,7 +65,7 @@ export function AboutSection() {
                 </p>
               </div>
               <div className="rounded-lg border border-border bg-card p-4 text-center">
-                <p className="text-2xl font-bold text-primary">10+</p>
+                <p className="text-2xl font-bold text-primary">20+</p>
                 <p className="text-xs text-muted-foreground">Technologies</p>
               </div>
             </div>
