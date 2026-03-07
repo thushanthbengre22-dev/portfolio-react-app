@@ -78,37 +78,10 @@ professional tactical tone without requiring post-inference filtering.
 
 ## 🔍 Job Scout — AI Job Search Agent (Micro-Frontend)
 
-A full-stack AI-powered job search agent deployed as a micro-frontend at `bengredev.com/ai-lab/job-search-agent`. It aggregates job listings, scores them with AI, and delivers personalized digests via email — both on-demand and on a daily automated schedule.
+A full-stack AI-powered job search agent deployed as a micro-frontend at `bengredev.com/ai-lab/job-search-agent`.
 
-### 🏗️ Architecture
-
-Standalone Next.js app integrated into the parent domain via Next.js rewrites, with Vercel environment-based `basePath` configuration.
-
-```mermaid
-graph TD
-    A[User Input: roles, locations, skills] --> B[Next.js API Route]
-    B --> C[JSearch API - parallel fetch via Promise.all]
-    C --> D[Deduplicate & Sanitize]
-    D --> E{Claude Haiku - AI Scoring}
-    E --> F[Score & Analyze Jobs]
-    F --> G[Streaming NDJSON Response]
-    G --> H[Real-time UI Updates]
-    F --> I[Resend Email Delivery]
-    J[Vercel Cron Job] --> B
-
-    style E fill:#064e3b,stroke:#059669,stroke-width:2px,color:#fff
-    style B fill:#1e293b,stroke:#475569,color:#fff
-    style J fill:#1e293b,stroke:#475569,color:#fff
-```
-
-### ⚙️ Key Technical Highlights
-
-* **Agentic Pipeline:** Multi-step loop using the Anthropic Claude API (claude-haiku) — fetch → deduplicate → analyze → score → deliver. Streaming responses via the Anthropic SDK's streaming interface.
-* **Backend:** Next.js 15 App Router API routes with streaming NDJSON responses. JSearch API integration with `Promise.all` for parallel fetching. Automated email delivery via Resend with custom HTML templates.
-* **Scheduled Automation:** Vercel Cron Jobs for daily digest delivery.
-* **Security:** CORS enforcement via Next.js middleware, IP and email-based rate limiting with Upstash Redis (`@upstash/ratelimit`), input validation and request sanitization.
-* **Frontend:** Dark-mode UI with React, TypeScript, and Tailwind CSS. Real-time status updates via streaming fetch with a `ReadableStream` reader. Tag-based input components for dynamic configuration.
-* **Infrastructure:** Upstash Redis for serverless-compatible persistent state.
+For full technical details, architecture, and implementation notes, see the dedicated repository:
+👉 [thushanthbengre22-dev/job-search-agent](https://github.com/thushanthbengre22-dev/job-search-agent)
 
 ---
 
