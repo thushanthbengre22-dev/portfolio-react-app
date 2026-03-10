@@ -9,7 +9,8 @@ const upcomingExperiments = [
       "An autonomous soccer agent powered by Gemini and football-data.org. It intelligently chooses between official API stats and live web searching for injuries and news." +
       "The Agent suggests questions for follow-ups and tactical deep-dives.",
     href: "/ai-lab/football-chatbot",
-    status: "active"
+    status: "active",
+    technologies: ["Gemini 2.0 Flash", "Vercel AI SDK", "football-data.org", "Tavily Search"],
   },
   {
     icon: Briefcase,
@@ -17,7 +18,8 @@ const upcomingExperiments = [
     description:
       "An AI agent that searches the web for available job listings matching your profile and sends a curated summary directly to your email.",
     href: "/ai-lab/job-search-agent",
-    status: "active"
+    status: "active",
+    technologies: ["Claude Haiku", "JSearch API", "Resend", "Upstash Redis", "Vercel Cron"],
   },
   {
     icon: FlaskConical,
@@ -78,9 +80,22 @@ export function AiLabSection() {
                   {experiment.description}
                 </p>
 
-                <div className={`mt-4 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${
-                  experiment.status === "active" 
-                    ? "bg-primary/10 text-primary" 
+                {"technologies" in experiment && experiment.technologies && (
+                  <div className="mt-4 flex flex-wrap gap-1.5">
+                    {experiment.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md border border-border bg-secondary/50 px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className={`mt-3 inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider ${
+                  experiment.status === "active"
+                    ? "bg-primary/10 text-primary"
                     : "bg-secondary/50 text-muted-foreground"
                 }`}>
                   {experiment.status === "active" ? "Live Demo" : "Upcoming"}
