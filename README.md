@@ -85,6 +85,15 @@ For full technical details, architecture, and implementation notes, see the dedi
 
 ---
 
+## 🤖 Warren BotIt — Polymarket AI Paper Trading Bot
+
+An AI-powered paper trading bot that scans live Polymarket prediction markets, uses Claude Sonnet to estimate probabilities, and sends trade signals via Telegram. Deployed as a proxied dashboard at `bengredev.com/ai-lab/warren-bot-it`.
+
+For full technical details, architecture, and implementation notes, see the dedicated repository:
+👉 [thushanthbengre22-dev/warren-bot-it](https://github.com/thushanthbengre22-dev/warren-bot-it)
+
+---
+
 ## ✨ Features
 
 * **Responsive Design:** Fully optimized for mobile, tablet, and desktop.
