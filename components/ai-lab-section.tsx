@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { FlaskConical, BrainCircuit, Briefcase, Lock, ExternalLink, Hammer } from "lucide-react"
+import { FlaskConical, BrainCircuit, Briefcase, Lock, ExternalLink, Hammer, Bot } from "lucide-react"
 
 const upcomingExperiments = [
   {
@@ -20,6 +20,15 @@ const upcomingExperiments = [
     href: "/ai-lab/job-search-agent",
     status: "active",
     technologies: ["Claude Haiku", "JSearch API", "Resend", "Upstash Redis", "Vercel Cron"],
+  },
+  {
+    icon: Bot,
+    title: "Warren BotIt",
+    description:
+      "A Polymarket AI paper trading bot. Scans live prediction markets hourly, uses Claude Sonnet to estimate probabilities, detects edges, and alerts via Telegram with Approve/Skip buttons. All trades are simulated against a virtual wallet.",
+    href: "/ai-lab/warren-bot-it",
+    status: "active",
+    technologies: ["Claude Sonnet", "Polymarket", "Tavily Search", "Upstash Redis", "Telegram", "Railway"],
   },
   {
     icon: FlaskConical,
